@@ -41,8 +41,8 @@ export default function App({ location }) { // recebe location de Route como pro
   return (
     <Suspense fallback={ <LinearProgress /> }>
       <Switch>
-        <Route  path='/login' exact component={Login}/>
-        <Route  path='/' exact component={MainPage} />
+        <Route  path='/login' component={Login}/>
+        <Route  path='/'  component={MainPage} />
       </Switch>
     </Suspense>
   )

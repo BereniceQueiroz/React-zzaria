@@ -15,7 +15,7 @@ export default function Main() {
       <Suspense fallback='Loading ...'>
         <Switch>
           <Route path='/' exact component={ChoosePizzaSize} />
-          <Route  path='/sabores-da-pizza' component={ChoosePizzaFlavours} />
+          <Route path='/sabores-da-pizza' exact component={ChoosePizzaFlavours} />
         </Switch>
       </Suspense>
     </Content>
