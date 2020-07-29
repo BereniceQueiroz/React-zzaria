@@ -4,6 +4,7 @@ import type from 'prop-types'
 import  firebase from 'services/firebase';
 import { LinearProgress } from '@material-ui/core';
 import { AuthContext } from 'context/auth';
+import { HOME, LOGIN } from 'routes'
 
 const Login = lazy(() => import('Pages/login'))
 const MainPage = lazy(() => import('Pages/main'))
@@ -31,18 +32,18 @@ export default function App({ location }) { // recebe location de Route como pro
     return <LinearProgress />
   };
 
-  if(isUserloggedIn && location.pathname === '/login') {
-    return <Redirect to='/' />
+  if(isUserloggedIn && location.pathname === LOGIN ) {
+    return <Redirect to={HOME} />
   }
-  if(!isUserloggedIn && location.pathname !== '/login') {
-    return <Redirect to='/login' />
+  if(!isUserloggedIn && location.pathname !== LOGIN ) {
+    return <Redirect to={LOGIN} />
   }
 
   return (
     <Suspense fallback={ <LinearProgress /> }>
       <Switch>
-        <Route  path='/login' component={Login}/>
-        <Route  path='/'  component={MainPage} />
+        <Route  path={LOGIN} component={Login}/>
+        <Route  path={HOME}  component={MainPage} />
       </Switch>
     </Suspense>
   )

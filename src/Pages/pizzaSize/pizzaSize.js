@@ -13,7 +13,8 @@ import {
   Titles
 } from './pizzaSize.style';
 import { AuthContext } from 'context/auth';
-import pizzaSizes from 'fake-data/pizzasSizes'
+import pizzaSizes from 'fake-data/pizzasSizes';
+import { CHOOSE_PIZZA_FLAVOURS } from 'routes';
 
 export default function PizzaSize() {
   const { userInfo } = useContext(AuthContext);
@@ -28,7 +29,10 @@ export default function PizzaSize() {
         {pizzaSizes.map((pizza) => (
           <Grid item key={pizza.id} xs >
             <Card>
-             <CardActionPizza to='/sabores-da-pizza'>
+             <CardActionPizza to={{
+               pathname:CHOOSE_PIZZA_FLAVOURS,
+               state: pizza //obj que sera passado no state
+             }}>
               <Pizza>
                 <PizzaText>{pizza.size} cm</PizzaText>
               </Pizza>
